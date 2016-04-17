@@ -45,6 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+<<<<<<< HEAD
 *.war
 target/carpoling-0.0.1-SNAPSHOT/WEB-INF/classes/com/wpl/ApplicationClient.class
 *.class
@@ -54,3 +55,12 @@ target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 *.lst
 WebContent/META-INF/MANIFEST.MF
 *.p12
+=======
+*.p12
+*.jar
+*.properties
+*.lst
+*.MF
+*.class
+target/carpoling-0.0.1-SNAPSHOT.war
+>>>>>>> parent of 5ff5413... Revert "Initial Commit"
