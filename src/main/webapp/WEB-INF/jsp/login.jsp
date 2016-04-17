@@ -1,70 +1,107 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script
-	src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script
-	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<title>Welcome Login</title>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<meta charset="UTF-8">
+<title>Login/Logout animation concept</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=yes">
+
+
+<link rel='stylesheet prefetch'
+	href='//fonts.googleapis.com/css?family=Open+Sans'>
+
+<link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
-	<div class="container">
-		<div id="errorMessage">
-			<c:choose>
-				<c:when test="${result == false}">
-					<div class="alert alert-danger fade in">
-						<a href="#" class="close" data-dismiss="alert">&times;</a> <strong>Error!</strong>
-						Invalid User Id / Password
-					</div>
-				</c:when>
-				<c:when test="${result == true}">
-					<div class="alert alert-success fade in">
-						<a href="#" class="close" data-dismiss="alert">&times;</a> <strong>Success!</strong>
-						Successful Login
-					</div>
-				</c:when>
-			</c:choose>
-		</div>
 
+	<div class="cont">
+		<div class="demo">
+			<div class="login">
+				<div class="login__check"></div>
+				<div class="login__form">
+					<div class="login__row">
+						<svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+            <path
+								d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+          </svg>
+						<input type="text" class="login__input name"
+							placeholder="Username" />
+					</div>
+					<div class="login__row">
+						<svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+            <path
+								d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+          </svg>
+						<input type="password" class="login__input pass"
+							placeholder="Password" />
+					</div>
+					<button type="button" class="login__submit">Sign in</button>
+					<p class="login__signup">
+						Don't have an account? &nbsp;<a class="login__register">Sign
+							up</a>
+					</p>
+				</div>
+			</div>
 
-		<div class="container row">
-			<div class="well bs-component">
-				<form class="form-horizontal" name="login" action="login"
-					method="POST">
-					<div class="form-group">
-						<label for="userId" class="col-lg-2 control-label">User ID
-							:</label>
-						<div class="col-lg-10">
-							<input type="text" class="form-control" id="userId" name="userId"
-								placeholder="User Id" />
-						</div>
-					</div>
+			<div class="app">
+				<div class="app__top">
 
-					<div class="form-group">
-						<label for="password" class="col-lg-2 control-label">Password
-							:</label>
-						<div class="col-lg-10">
-							<input type="password" class="form-control" id="password"
-								name="password" placeholder="Password" />
-						</div>
+					<p class="app__hello">Get Started!</p>
+					<div class="login__row">
+						<svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+            <path
+								d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+          </svg>
+						<input type="text" class="login__input name"
+							placeholder="First Name" />
+						<svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+            <path
+								d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+          </svg>
+						<input type="text" class="login__input name"
+							placeholder="Last Name" />
+						<svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+            <path
+								d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+          </svg>
+						<input type="email" class="login__input name"
+							placeholder="Email Address" />
+						<svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+            <path
+								d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+          </svg>
+						<input type="text" class="login__input name"
+							placeholder="Username" />
+						<svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+            <path
+								d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+          </svg>
+						<input type="password" class="login__input pass"
+							placeholder="Password" />
+						<svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+            <path
+								d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+          </svg>
+						<input type="password" class="login__input pass"
+							placeholder="Confirm Password" />
+						<svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+            <path
+								d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+          </svg>
+						<input type="number" class="login__input name"
+							placeholder="Phone Number" />
+						<button type="button" class="login__submit">Done</button>
 					</div>
-					<div class="form-group">
-						<div class="col-lg-10 col-lg-offset-2">
-							<button type="reset" class="btn btn-default">Reset</button>
-							<button type="submit" class="btn btn-primary">Sign In</button>
-						</div>
-					</div>
-				</form>
+				</div>
+
 			</div>
 		</div>
 	</div>
+	<script
+		src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+	<script src="js/index.js"></script>
+</body>
 </html>

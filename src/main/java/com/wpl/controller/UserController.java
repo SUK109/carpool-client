@@ -10,13 +10,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestTemplate;
 
 import com.wpl.localservice.EmailService;
 import com.wpl.model.User;
 
 @Controller
-//@SessionAttributes("result")
+@SessionAttributes("user")
 public class UserController
 {
 	@Autowired
@@ -57,11 +58,5 @@ public class UserController
 		params.put("userId", userId);
 		ResponseEntity<User> user = template.getForEntity(url, User.class,params);
 		return user.getBody();
-	}
-	
-	@RequestMapping(value="/sendEmail",method=RequestMethod.GET)
-	public void sendMail(@RequestParam("emailId") String emailId)
-	{
-		emailService.sendMail(emailId);
 	}
 }
