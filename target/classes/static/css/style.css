@@ -39,7 +39,7 @@ input, button {
 .cont {
   position: relative;
   height: 100%;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/142996/slider-2.jpg");
+  background-image: url("/images/background.jpg");
   background-size: cover;
   overflow: auto;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -50,9 +50,9 @@ input, button {
   top: 50%;
   left: 50%;
   margin-left: -15rem;
-  margin-top: -26.5rem;
+  margin-top: -27.5rem;
   width: 30rem;
-  height: 53rem;
+  height: 56rem;
   overflow: hidden;
 }
 
@@ -285,7 +285,6 @@ input, button {
   font-size: 2.2rem;
   color: #fff;
   font-weight: normal;
-  margin-bottom: 3rem;
 }
 .app__user {
   position: relative;

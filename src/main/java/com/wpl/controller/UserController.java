@@ -20,9 +20,6 @@ import com.wpl.model.User;
 @SessionAttributes("user")
 public class UserController
 {
-	@Autowired
-	private EmailService emailService;
-	
 	@RequestMapping(value="/login",method=RequestMethod.POST) 
 	public String checkUser(@RequestParam("userId") String userId,
 			@RequestParam("password") String password, ModelMap model)
