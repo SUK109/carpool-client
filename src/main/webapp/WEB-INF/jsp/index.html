@@ -1,14 +1,13 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>User Profile</title>
+		<title>Carpool Application Profile</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="css/main.css" />
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	</head>
 	<body>
-	<input type="hidden" id="uid" value="${user.userId }" />
 	<!-- Header -->
 			<div id="header">
 				<div class="top">
@@ -37,8 +36,8 @@
 					<section id="top" class="one dark cover">
 						<div class="container">
 							<header>
-								<h2 class="alt">Hi! <strong id="fname">${user.firstName}</strong>,</h2> 
-								<p>Welcome to SPARK Carpool</p>
+								<h2 class="alt">Hi! <strong>${user.firstName} ${user.lastName}</strong>,</h2> 
+								<p>Welcome to SPARK Carpool System</p>
 							</header>
 						</div>
 					</section>
@@ -49,26 +48,13 @@
 							<header>
 								<h2>Profile</h2>
 							</header>
-						<form id="updateForm">
-								<div class="row">
-									<div class="12u$ 12u$(mobile)">
-										<span class="spanhead">First Name : </span><span class="spancontent" id="ufirstName" contenteditable="true">${user.firstName}</span>
-									</div>
-									<div class="12u$ 12u$(mobile)">
-										<span class="spanhead">Last Name : </span><span id="ulastName" class="spancontent" contenteditable="true">${user.lastName}</span>
-									</div>
-									<div class="12u$ 12u$(mobile)">
-										<span class="spanhead">Email ID : </span><span class="spancontent" id="uemailId" contenteditable="true">${user.emailId}</span>	
-									</div>
-									<div class="12u$ 12u$(mobile)">
-										<span class="spanhead">Phone No : </span><span id="uphoneNo" class="spancontent" contenteditable="true">${user.phoneNo}</span>
-									</div>
-									<div class="12u$">
-										<input type="button" id="updateBtn" value="Update Profile" />
-										<p style="color:green" id="prof"></p>
-									</div>
-								</div>
-							</form>
+
+							<p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
+							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
+							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
+							parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper
+							dolor. Libero rutrum ut lacinia donec curae mus vel quisque sociis nec
+							ornare iaculis.</p>
 						</div>
 					</section>
 
@@ -151,7 +137,7 @@
 									</div>
 									<div class="12u$">
 										<input type="button" id="sendBtn" value="Send Message" />
-										<p style="color:green" id="msg"></p>
+										<br><span style="color:green" id="msg">Email Sent</span>
 									</div>
 								</div>
 							</form>
@@ -182,49 +168,10 @@
                 var emailId = $('#emailId').val();
                 $.get('sendEmail', {
                         emailId : emailId
-                }, function(response) {
-                        $('#msg').text(response);
-                	});
-        		});
-        		
-        		$('#updateBtn').click(function(event) {
-        			event.preventDefault();
-        		    $.ajax({
-        		    	headers: { 
-        		            'Accept': 'application/json',
-        		            'Content-Type': 'application/json' 
-        		        },
-        		    		type: "GET",
-        		            url: "updateProfile",
-        		            contentType: "application/json",
-        		            data: { userId: $("#uid").val(), 
-        		            		firstName: $("#ufirstName").text(),
-        		            		lastName: $("#ufirstName").text() ,
-        		            		emailId: $("#uemailId").text() ,
-        		            		phoneNo: $("#uphoneNo").text() ,
-        		            	  },
-        		            success:function(result){
-        		      $("#msg").text(result);
-        		            }
-        		    });
-        		})
-        		
-        		$('#updateB').click(function(event) {
-        			var userId = $("#fname").text();
-                    var firstName = $('#ufirstName').text();
-                    var lastName = $('#ulastName').text();
-                    var emailId = $('#uemailId').text();
-                    var phoneNo = $('#uphoneNo').text();
-                    $.get('updateProfile', {
-                    		userId: userId,
-                    		firstName: firstName,
-                            lastName: lastName,
-                    		emailId : emailId,
-                    		phoneNo: phoneNo
-                    }, function(response) {
-                            $('#msg').text(response);
-                    	});
-            		});
+                }, function() {
+                        $('#msg').text("Email Sent Successfully");
+                });
+        	});
 			});
 	</script>
 	</body>

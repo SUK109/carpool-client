@@ -20,10 +20,12 @@ public class EmailService
 		String to = emailId;
 		String from = "sparksupport@utdallas.edu";
 		String host = "smtp.gmail.com";
-		String subject = "SPARK - Thank you for your email !";
+		String subject = "SPARK Support - Thank you for your email !";
 		String body = "Greetings,<br><br>"
-				+ "We have received your email. We will get back to you as soon as possible.<br><br>"
-				+ "Have a wonderful day!<br><br>Thank You,<br>"
+				+ "We have received your email.<br>"
+				+ "We will get back to you as soon as possible.<br><br>"
+				+ "Have a wonderful day!<br><br>"
+				+ "Thank You,<br>"
 				+ "<b>Spark Support Team</b>";
 		
 		

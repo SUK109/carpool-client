@@ -1,7 +1,5 @@
 package com.wpl.model;
 
-import java.sql.Date;
-
 public class User {
 	
 	private String userId;
@@ -10,15 +8,9 @@ public class User {
 	private String lastName;
 	private String lastLogin;
 	private String emailId;
-	private Date birthDate;
+	private String phoneNo;
 	private int loginAttempts;
 	
-	public int getNoOfFailedAttempts() {
-		return loginAttempts;
-	}
-	public void setNoOfFailedAttempts(int noOfFailedAttempts) {
-		this.loginAttempts = noOfFailedAttempts;
-	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -46,14 +38,20 @@ public class User {
 	public String getUserId() {
 		return userId;
 	}
-	public Date getBirthDate() {
-		return birthDate;
-	}
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
-	}
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	public String getPhoneNo() {
+		return phoneNo;
+	}
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+	public int getLoginAttempts() {
+		return loginAttempts;
+	}
+	public void setLoginAttempts(int loginAttempts) {
+		this.loginAttempts = loginAttempts;
 	}
 	public String getPassword() {
 		return password;
