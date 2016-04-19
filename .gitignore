@@ -60,3 +60,7 @@ WebContent/META-INF/MANIFEST.MF
 *.class
 target/carpoling-0.0.1-SNAPSHOT.war
 >>>>>>> parent of 5ff5413... Revert "Initial Commit"
+target/carpoling-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties
+target/classes/application.properties
+target/classes/static/css/font-awesome.min.css
+target/classes/static/css/font-awesome.min.css
