@@ -3,16 +3,18 @@ package com.wpl.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.client.RestTemplate;
 
 import com.wpl.model.User;
@@ -59,8 +61,7 @@ public class UserController
 	}
 	
 	@RequestMapping(value="/updateProfile",method=RequestMethod.POST)
-	@ResponseBody
-	public String updateProfile(@RequestBody User user)
+	public @ResponseBody String updateProfile(@RequestBody User user)
 	{
 		String url = "https://localhost:8180/user/updateUserProfile";
 		RestTemplate template = new RestTemplate();
@@ -70,17 +71,25 @@ public class UserController
 		params.put("lastName", lastName);
 		params.put("emailId", emailId);
 		params.put("phoneNo", phoneNo);*/
-		User user = new User();
+		/*User user = new User();
 		user.setUserId(userId);
 		user.setEmailId(emailId);
 		user.setFirstName(firstName);
 		user.setLastName(lastName);
 		user.setPhoneNo(phoneNo);
-		user.setEmailId(emailId);
+		user.setEmailId(emailId);*/
 		
 		System.out.println(user.toString());
 		Boolean result = template.postForObject(url, user,Boolean.class);
 		System.out.println("Called");
 		return "Profile Updated Successfully";
+	}
+	
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session, SessionStatus status) {
+		
+		status.setComplete();
+        session.removeAttribute("user");
+		return "login";
 	}
 }

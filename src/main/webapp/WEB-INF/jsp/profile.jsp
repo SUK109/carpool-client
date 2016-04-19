@@ -20,12 +20,14 @@
 					<!-- Nav -->
 						<nav id="nav">
 							<ul>
-								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
-								<li><a href="#profile" id="about-link" class="skel-layers-ignoreHref"><span class="icon fa-user">My Profile</span></a></li>
-								<li><a href="#myrides" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">View Rides</span></a></li>
-								<li><a href="#search" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">Search Rides</span></a></li>
-								<li><a href="#cart" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">View Cart</span></a></li>
+								<li><a href="#intro" id="intro-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
+								<li><a href="#profile" id="profile-link" class="skel-layers-ignoreHref"><span class="icon fa-user">My Profile</span></a></li>
+								<li><a href="#myrides" id="myrides-link" class="skel-layers-ignoreHref"><span class="icon fa-car">View Rides</span></a></li>
+								<li><a href="#search" id="search-link" class="skel-layers-ignoreHref"><span class="icon fa-search">Search Rides</span></a></li>
+								<li><a href="#postride" id="postride-link" class="skel-layers-ignoreHref"><span class="icon fa-bookmark">Post Ride</span></a></li>
+								<li><a href="#cart" id="cart-link" class="skel-layers-ignoreHref"><span class="fa-shopping-cart">View Cart</span></a></li>
 								<li><a href="#contact" id="contact-link" class="skel-layers-ignoreHref"><span class="icon fa-envelope">Contact Support Team</span></a></li>
+								<li><a href="<c:url value='logout' />" id="logout-link" class="skel-layers-ignoreHref"><span class="icon fa-sign-out">Log Out</span></a></li>
 							</ul>
 						</nav>
 				</div>
@@ -34,7 +36,7 @@
 		<!-- Main -->
 			<div id="main">
 				<!-- Intro -->
-					<section id="top" class="one dark cover">
+					<section id="intro" class="one dark cover">
 						<div class="container">
 							<header>
 								<h2 class="alt">Hi! <strong id="fname">${user.firstName}</strong>,</h2> 
@@ -72,8 +74,8 @@
 						</div>
 					</section>
 
-				<!-- Portfolio -->
-					<section id="profile" class="three">
+				<!-- My Rides -->
+					<section id="myrides" class="three">
 						<div class="container">
 							<header>
 								<h2>Your Rides</h2>
@@ -132,8 +134,38 @@
 						</div>
 					</section>
 
+				<!-- Search Ride -->
+				
+				<section id="search" class="four">
+					<div class="container">
+						<header>
+							<h2>Contact</h2>
+						</header>
+					</div>
+				</section>
+				
+				<!-- Post Ride -->
+				
+				<section id="postride" class=five>
+					<div class="container">
+						<header>
+							<h2>Contact</h2>
+						</header>
+					</div>
+				</section>
+			
+				<!-- Cart -->
+				
+				<section id="cart" class="six">
+					<div class="container">
+						<header>
+							<h2>Contact</h2>
+						</header>
+					</div>
+				</section>
+				
 				<!-- Contact -->
-					<section id="contact" class="four">
+					<section id="contact" class="seven">
 						<div class="container">
 
 							<header>
@@ -188,40 +220,25 @@
         		});
         		
         		$('#updateBtn').click(function(event) {
-        			event.preventDefault();
-        		    $.ajax({
-        		    		type: "POST",
-        		            url: "updateProfile",
-        		            contentType: "application/json; charset=utf-8",
-        		            dataType: "json",
-        		            data: { userId: $("#uid").val(), 
-        		            		firstName: $("#ufirstName").text(),
-        		            		lastName: $("#ulastName").text() ,
-        		            		emailId: $("#uemailId").text() ,
-        		            		phoneNo: $("#uphoneNo").text() ,
-        		            	  },
-        		            success:function(result){
-        		      $("#prof").text(result);
-        		            }
-        		    });
-        		})
-        		
-        		$('#updateB').click(function(event) {
         			var userId = $("#uid").val();
                     var firstName = $('#ufirstName').text();
                     var lastName = $('#ulastName').text();
                     var emailId = $('#uemailId').text();
                     var phoneNo = $('#uphoneNo').text();
-                    $.get('updateProfile', {
-                    		userId: userId,
-                    		firstName: firstName,
-                            lastName: lastName,
-                    		emailId : emailId,
-                    		phoneNo: phoneNo
-                    }, function(response) {
-                            $('#msg').text(response);
-                    	});
-            		});
+                    var json = {"userId":userId,"firstName":firstName,"lastName":lastName,
+                    		"emailId":emailId,"phoneNo":phoneNo}
+        			$.ajax({
+        		    		type: "POST",
+        		            url: "updateProfile",
+        		            contentType: "application/json; charset=utf-8",
+        		            dataType: "text",
+        		            data: JSON.stringify(json),
+        		            success:function(result){
+        		      $("#prof").text(result);
+        		            }
+        		    });
+                    event.preventDefault();
+        		});
 			});
 	</script>
 	</body>
