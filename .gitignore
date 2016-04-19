@@ -58,7 +58,6 @@ WebContent/META-INF/MANIFEST.MF
 =======
 *.p12
 *.jar
-*.properties
 *.lst
 *.MF
 *.class

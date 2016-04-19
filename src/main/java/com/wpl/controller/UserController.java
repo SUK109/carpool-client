@@ -60,13 +60,7 @@ public class UserController
 	
 	@RequestMapping(value="/updateProfile",method=RequestMethod.POST)
 	@ResponseBody
-	public String updateProfile(
-			@RequestHeader("userId") String userId,
-			@RequestHeader("firstName") String firstName,
-			@RequestHeader("lastName") String lastName,
-			@RequestHeader("emailId") String emailId,
-			@RequestHeader("phoneNo") String phoneNo
-			)
+	public String updateProfile(@RequestBody User user)
 	{
 		String url = "https://localhost:8180/user/updateUserProfile";
 		RestTemplate template = new RestTemplate();
