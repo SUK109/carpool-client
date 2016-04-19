@@ -16,7 +16,7 @@ public class ReviewController
 	@Autowired
 	private EmailService emailService;
 	
-	@RequestMapping(value="/sendEmail",method=RequestMethod.GET,produces="text/plain")
+	@RequestMapping(value="/sendEmail",method=RequestMethod.GET)
 	@ResponseBody
 	public String sendMail(@RequestParam("emailId") String emailId)
 	{

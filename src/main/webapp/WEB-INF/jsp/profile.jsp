@@ -190,27 +190,24 @@
         		$('#updateBtn').click(function(event) {
         			event.preventDefault();
         		    $.ajax({
-        		    	headers: { 
-        		            'Accept': 'application/json',
-        		            'Content-Type': 'application/json' 
-        		        },
-        		    		type: "GET",
+        		    		type: "POST",
         		            url: "updateProfile",
-        		            contentType: "application/json",
+        		            contentType: "application/json; charset=utf-8",
+        		            dataType: "json",
         		            data: { userId: $("#uid").val(), 
         		            		firstName: $("#ufirstName").text(),
-        		            		lastName: $("#ufirstName").text() ,
+        		            		lastName: $("#ulastName").text() ,
         		            		emailId: $("#uemailId").text() ,
         		            		phoneNo: $("#uphoneNo").text() ,
         		            	  },
         		            success:function(result){
-        		      $("#msg").text(result);
+        		      $("#prof").text(result);
         		            }
         		    });
         		})
         		
         		$('#updateB').click(function(event) {
-        			var userId = $("#fname").text();
+        			var userId = $("#uid").val();
                     var firstName = $('#ufirstName').text();
                     var lastName = $('#ulastName').text();
                     var emailId = $('#uemailId').text();

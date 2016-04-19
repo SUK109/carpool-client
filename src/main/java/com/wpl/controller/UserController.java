@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,25 +58,34 @@ public class UserController
 		return user.getBody();
 	}
 	
-	@RequestMapping(value="/updateProfile",method=RequestMethod.GET,produces="text/plain")
+	@RequestMapping(value="/updateProfile",method=RequestMethod.POST)
 	@ResponseBody
 	public String updateProfile(
-			@RequestParam("userId") String userId,
-			@RequestParam("firstName") String firstName,
-			@RequestParam("lastName") String lastName,
-			@RequestParam("emailId") String emailId,
-			@RequestParam("phoneNo") String phoneNo
+			@RequestHeader("userId") String userId,
+			@RequestHeader("firstName") String firstName,
+			@RequestHeader("lastName") String lastName,
+			@RequestHeader("emailId") String emailId,
+			@RequestHeader("phoneNo") String phoneNo
 			)
 	{
 		String url = "https://localhost:8180/user/updateUserProfile";
 		RestTemplate template = new RestTemplate();
-		Map<String,String> params = new HashMap<String,String>();
+		/*Map<String,String> params = new HashMap<String,String>();
 		params.put("userId", userId);
 		params.put("firstName", firstName);
 		params.put("lastName", lastName);
 		params.put("emailId", emailId);
-		params.put("phoneNo", phoneNo);
-		template.getForEntity(url, Boolean.class,params);
+		params.put("phoneNo", phoneNo);*/
+		User user = new User();
+		user.setUserId(userId);
+		user.setEmailId(emailId);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setPhoneNo(phoneNo);
+		user.setEmailId(emailId);
+		
+		System.out.println(user.toString());
+		Boolean result = template.postForObject(url, user,Boolean.class);
 		System.out.println("Called");
 		return "Profile Updated Successfully";
 	}
