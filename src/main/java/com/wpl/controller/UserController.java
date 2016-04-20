@@ -78,7 +78,7 @@ public class UserController
 		user.setLastName(lastName);
 		user.setPhoneNo(phoneNo);
 		user.setEmailId(emailId);*/
-		
+		System.out.println(user.getEmailId());
 		System.out.println(user.toString());
 		Boolean result = template.postForObject(url, user,Boolean.class);
 		System.out.println("Called");

@@ -41,6 +41,7 @@
 							<header>
 								<h2 class="alt">Hi! <strong id="fname">${user.firstName}</strong>,</h2> 
 								<p>Welcome to SPARK Carpool</p>
+								<p>Last Login at : ${user.lastLogin},  Incorrect Login Attempts : ${user.loginAttempts}</p> 
 							</header>
 						</div>
 					</section>
