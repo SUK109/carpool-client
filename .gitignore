@@ -58,6 +58,7 @@ WebContent/META-INF/MANIFEST.MF
 *.lst
 *.MF
 *.class
+target
 >>>>>>> parent of 5ff5413... Revert "Initial Commit"
 target/carpoling-0.0.1-SNAPSHOT/WEB-INF/classes/application.properties
 target/classes/application.properties
