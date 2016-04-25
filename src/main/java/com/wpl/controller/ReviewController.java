@@ -1,26 +1,34 @@
 package com.wpl.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.RestTemplate;
 
-import com.wpl.localservice.EmailService;
+import com.wpl.model.User;
 
-//@SessionAttributes("result")
 @Controller
 public class ReviewController
 {
-	@Autowired
-	private EmailService emailService;
 	
-	@RequestMapping(value="/sendEmail",method=RequestMethod.GET)
+	@RequestMapping(value="/addReview")
 	@ResponseBody
-	public String sendMail(@RequestParam("emailId") String emailId)
+	public String addReview(@RequestParam("rideId") String rideId,@RequestParam("stars") String stars,HttpSession session)
 	{
-		emailService.sendMail(emailId);
-		return "Email Sent Successfully";
+		User user = (User)session.getAttribute("user");
+		RestTemplate template = new RestTemplate();
+		String url = "https://localhost:8180/review/addReview?rideId={rideId}&stars={stars}&userId={userId}";
+		Map<String,String> params = new HashMap<String,String>();
+		params.put("rideId", rideId);
+		params.put("stars", stars);
+		params.put("userId", user.getUserId());
+		template.getForEntity(url, Boolean.class, params);
+		return "Review Posted";
 	}
 }
